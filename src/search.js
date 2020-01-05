@@ -4,7 +4,7 @@ import logo from '../images/logo.jpg';
 
 class Search extends React.Component {
     render () {
-        return <div>Search Page change<img src={logo}/></div>
+        return <div>Search Page watch change<img src={logo}/></div>
     }
 }
 
