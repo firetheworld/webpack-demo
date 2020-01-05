@@ -1,0 +1,50 @@
+'use strict';
+
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+    entry: {
+        index: './src/index.js',
+        search: './src/search.js'
+    },
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].js'
+    },
+    mode: 'development',
+    module: {
+        rules: [
+            {
+                test: /.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
+            },
+            {
+                test: /.js$/,
+                use: 'babel-loader'
+            },
+            {
+                test: /.(jpg|png|gif|jpeg)/,
+                use: 'file-loader'
+            }
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: "./dist",
+        hot: true
+    }
+}
