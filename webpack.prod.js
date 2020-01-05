@@ -3,6 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const MinCSSExtractPligin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -50,6 +53,38 @@ module.exports = {
     plugins: [
         new MinCSSExtractPligin({
             filename: '[name]_[contenthash:8].css'
+        }),
+        new OptimizeCssAssetsWebpackPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano')
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'search.html'),
+            filename: 'search.html',
+            chunks: ['search'],
+            inject: true,
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: false
+            }
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'index.html'),
+            filename: 'index.html',
+            chunks: ['index'],
+            inject: true,
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: false
+            }
         })
     ]
 }
