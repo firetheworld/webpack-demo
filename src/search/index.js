@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logo from '../../images/logo.jpg';
 import './search.less';
-
+import {showCommon} from '../../common';
 class Search extends React.Component {
     render () {
+        showCommon();
         return <div className='search-text'>Search Page watch change hot<img src={logo}/></div>
     }
 }
