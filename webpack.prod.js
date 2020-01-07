@@ -116,7 +116,7 @@ module.exports = {
             minSize: 0,
             cacheGroups: {
                 vendors: {
-                    test: /(react|react--dom)/,
+                    test: /(react|react-dom)/,
                     name: 'vendors',
                     chunks: 'all'
                 },
