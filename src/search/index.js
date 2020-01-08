@@ -14,7 +14,7 @@ class Search extends React.Component {
          }
     }
 
-    showText() {
+    showText = () => {
         import('./text').then(Text => {
             this.setState({Text: Text.default});
         })
@@ -29,7 +29,7 @@ class Search extends React.Component {
             {
                 Text ? <div>动态：<Text /></div> : null
             }
-            <img src={logo} onClick={this.showText.bind(this)} />
+            <img src={logo} onClick={this.showText} />
         </div>
     )
     }
