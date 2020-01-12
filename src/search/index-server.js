@@ -9,6 +9,7 @@ const logo = require('../../images/logo.jpg').default;
 const s = require('./search.less');
 console.log('logo is : ', logo);
 
+class Search extends React.Component {
 
     constructor() {
         super(...arguments);
