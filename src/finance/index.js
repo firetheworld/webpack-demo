@@ -1,41 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import logo from '../../images/logo.jpg';
-import './search.less';
-import {showCommon} from '../../common';
-import {usefulFn} from '../../common/useless';
-import {b} from '../../tree-shaking';
 
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-         this.state = {
-             Text: null
-         }
-    }
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-    showText = () => {
-        import('./text').then(Text => {
-            this.setState({Text: Text.default});
-        })
-    }
+import Bank from './pages/bank';
+import Fund from './pages/fund';
 
-    render () {
-        // showCommon();
-        const {Text} = this.state;
-    return (
-        <div className='search-text'>
-            {usefulFn()}Search Page watch change hot
-            {
-                Text ? <div>动态：<Text /></div> : null
-            }
-            <img src={logo} onClick={this.showText} />
-        </div>
-    )
-    }
+
+function App() {
+  return (
+    <div>
+        <Switch>
+            <Route path='/bank'>
+                <Bank />
+            </Route>
+            <Route path='/fund'>
+                <Fund />
+            </Route>
+            <Route path='/'>
+                <Bank />
+            </Route>
+        </Switch>
+    </div>
+  );
 }
 
+function SimpleApp() {
+    return <Bank />;
+}
+  
+
 ReactDOM.render(
-    <Search />,
-    document.getElementById('root')
-)
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
