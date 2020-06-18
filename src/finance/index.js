@@ -26,13 +26,13 @@ function App() {
 }
 
 function SimpleApp() {
-    return <Bank />;
+    return <App />;
 }
   
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <SimpleApp />
   </BrowserRouter>,
   document.getElementById("root")
 );

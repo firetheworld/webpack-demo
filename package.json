@@ -9,7 +9,8 @@
     "build:watch": "webpack --watch",
     "build:prod": "webpack --config webpack.prod.js",
     "build:ssr": "webpack --config webpack.ssr.js",
-    "dev": "webpack-dev-server --open --config webpack.prod.js"
+    "build:single": "webpack --config webpack.single.js",
+    "dev": "webpack-dev-server --config webpack.single.js"
   },
   "keywords": [],
   "author": "",
