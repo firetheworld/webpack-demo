@@ -15,7 +15,7 @@ module.exports = {
         filename: '[name]_[chunkhash:8].js'
     },
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         // compress: true,
@@ -82,25 +82,25 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, `src/finance/index.html`),
             filename: `index.html`,
-            // chunks: ['commons', 'vendors', 'main'],
+            chunks: ['commons', 'vendors', 'main'],
             inject: true,
         })
     ],
-    // optimization: {
-    //     splitChunks: {
-    //         minSize: 30000,
-    //         cacheGroups: {
-    //             vendors: {
-    //                 test: /(react|react-dom)/,
-    //                 name: 'vendors',
-    //                 chunks: 'all'
-    //             },
-    //             commons: {
-    //                 name: 'commons',
-    //                 chunks: 'all',
-    //                 minChunks: 2
-    //             }
-    //         }
-    //     }
-    // }
+    optimization: {
+        splitChunks: {
+            minSize: 30000,
+            cacheGroups: {
+                vendors: {
+                    test: /(react|react-dom)/,
+                    name: 'vendors',
+                    chunks: 'all'
+                },
+                commons: {
+                    name: 'commons',
+                    chunks: 'all',
+                    minChunks: 2
+                }
+            }
+        }
+    }
 }
