@@ -58,6 +58,11 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /.(jpg|png|gif|jpeg)/,
                 use: [
                     {
@@ -102,5 +107,8 @@ module.exports = {
                 }
             }
         }
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ],
     }
 }
