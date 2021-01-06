@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const GetFileListPlugin = require("./plugins/getFileListPlugin");
 
 module.exports = {
     entry: {
@@ -50,7 +51,8 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new GetFileListPlugin(),
     ],
     devServer: {
         contentBase: "./dist",
